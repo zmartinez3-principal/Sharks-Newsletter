@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IS 206 B SHARKS - Weekly Teacher Newsletter</title>
+  
+  <!-- Google Fonts: Oswald, Inter, Cinzel, Caveat -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Cinzel:wght@700;800&family=Caveat:wght@700&display=swap">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              700: '#003366',
+              800: '#002855',
+              900: '#001a38',
+              950: '#000f24',
+            },
+            shark: {
+              aqua: '#0284c7',
+              gold: '#f59e0b',
+              steel: '#475569',
+              light: '#f0f9ff'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            oswald: ['Oswald', 'sans-serif'],
+            cinzel: ['Cinzel', 'serif'],
+            hand: ['Caveat', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Web App Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000f24;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+
+    /* Marquee Bulb Glow Effect */
+    @keyframes bulbGlow {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px #f59e0b); transform: scale(1.1); }
+      50% { opacity: 0.3; filter: drop-shadow(0 0 1px #f59e0b); transform: scale(0.9); }
+    }
+    .bulb-light {
+      animation: bulbGlow 1.6s infinite ease-in-out;
+    }
+    .bulb-light:nth-child(even) {
+      animation-delay: 0.8s;
+    }
+
+    /* Admin Mode Editing Indicators */
+    body.admin-mode [contenteditable="true"] {
+      outline: 2px dashed #38bdf8 !important;
+      outline-offset: 3px;
+      border-radius: 4px;
+      cursor: text;
+      transition: all 0.2s ease;
+    }
+    body.admin-mode [contenteditable="true"]:hover {
+      background-color: rgba(56, 189, 248, 0.12);
+    }
+    body.admin-mode [contenteditable="true"]:focus {
+      outline: 2px solid #f59e0b !important;
+      background-color: rgba(245, 158, 11, 0.18);
+    }
+
+    /* Newsletter Page Dimensions (Optimized for Standard Letter ratio view) */
+    .newsletter-page {
+      width: 1050px;
+      min-height: 720px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Clean Print Stylesheet */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page-slide {
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        border-radius: 0 !important;
+      }
+      .page-slide:last-child {
+        page-break-after: auto !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans flex flex-col transition-all">
+
+  <!-- TOP TOOLBAR & CONTROL PANEL -->
+  <header class="no-print bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Logo Branding -->
+      <div class="flex items-center gap-3">
+        <img src="https://lh3.googleusercontent.com/gg/ACRwjatTTRy7P4X_JCKvO8eHBzTgY_1qNK9qG3UGsVEcUmb1xLEU03fGaTjZ5UlXLTUyMhDUJiyT-uyeiza-4m31T4otRSwdsp34LPZ9UxGDLLq33dirblteE_g4hQzTXlcMx_f9U29D9DIkGt_FSJlt-D26EUZhLB1OjtUJxEoI42isT21MJn7t-BkzpeWiI8Hsf5x0CyRNpkBIywOOEKV-xJ9mF1byDIrQ1kS8qu1d8UoWFlUO4DzztcenbWk0dDeyadYIXGjLS_Z5Zg5MtSzNaTuxZYCsQrKdwkk=s0" 
+             alt="IS 206 B Logo" class="h-10 w-auto object-contain">
+        <div>
+          <h1 class="font-oswald text-base font-bold text-sky-400 leading-none tracking-wider">
+            IS 206 B SHARKS
+          </h1>
+          <p class="text-[11px] text-slate-400 font-medium">Ann Cross Mersereau Newsletter Portal</p>
+        </div>
+      </div>
+
+      <!-- Week Selector Dropdown -->
+      <div class="flex items-center gap-2 bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 shadow-inner">
+        <i class="fa-solid fa-calendar-days text-amber-400 text-sm"></i>
+        <label for="weekSelect" class="text-xs font-semibold text-slate-400 hidden sm:inline">Edition:</label>
+        <select id="weekSelect" onchange="loadSelectedWeek()" class="bg-transparent text-xs font-bold text-white focus:outline-none cursor-pointer">
+          <!-- Populated dynamically via JS -->
+        </select>
+        <button onclick="createNewWeekPrompt()" title="Create New Weekly Edition" class="bg-sky-600 hover:bg-sky-500 text-white text-xs px-2.5 py-1 rounded font-bold transition flex items-center gap-1">
+          <i class="fa-solid fa-plus"></i> <span class="hidden md:inline">New Week</span>
+        </button>
+      </div>
+
+      <!-- View Selector Tabs -->
+      <div class="flex items-center bg-slate-950 rounded-lg p-1 border border-slate-800 text-xs font-semibold">
+        <button id="tab-p1" onclick="switchTab(1)" class="px-3 py-1 rounded-md transition text-amber-400 bg-slate-800 font-bold flex items-center gap-1.5">
+          <i class="fa-solid fa-film"></i> Page 1
+        </button>
+        <button id="tab-p2" onclick="switchTab(2)" class="px-3 py-1 rounded-md transition text-slate-400 hover:text-white flex items-center gap-1.5">
+          <i class="fa-solid fa-clipboard-check"></i> Page 2
+        </button>
+        <button id="tab-p3" onclick="switchTab(3)" class="px-3 py-1 rounded-md transition text-slate-400 hover:text-white flex items-center gap-1.5">
+          <i class="fa-solid fa-award"></i> Page 3
+        </button>
+        <button id="tab-all" onclick="switchTab('all')" class="px-3 py-1 rounded-md transition text-slate-400 hover:text-white flex items-center gap-1.5">
+          <i class="fa-solid fa-layer-group"></i> View All
+        </button>
+      </div>
+
+      <!-- Admin Actions & Print Buttons -->
+      <div class="flex items-center gap-2">
+        
+        <!-- How to Edit Help Button -->
+        <button onclick="openHelpModal()" class="bg-slate-800 hover:bg-slate-700 text-amber-400 border border-amber-500/30 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5" title="How to Edit Guide">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>How to Edit</span>
+        </button>
+
+        <!-- Admin Toggle Button -->
+        <button id="modeToggleBtn" onclick="toggleAdminMode()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-pen-to-square text-sky-400"></i>
+          <span id="modeText">Admin Mode: OFF</span>
+        </button>
+
+        <!-- Save / Publish Button -->
+        <button id="publishBtn" onclick="publishEdition()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-3.5 py-1.5 rounded-lg shadow-md transition flex items-center gap-1.5">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <span>Save & Publish</span>
+        </button>
+
+        <!-- Print PDF Button -->
+        <button onclick="triggerPrint()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5" title="Print or Save as PDF">
+          <i class="fa-solid fa-print text-amber-400"></i>
+          <span class="hidden xl:inline">Print PDF</span>
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- TOAST NOTIFICATION BANNER -->
+  <div id="toast" class="no-print fixed bottom-6 right-6 z-50 bg-amber-500 text-slate-950 px-4 py-3 rounded-xl shadow-2xl font-bold flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
+    <i class="fa-solid fa-circle-check text-xl"></i>
+    <span id="toastMsg">Newsletter successfully saved!</span>
+  </div>
+
+  <!-- HOW TO EDIT INSTRUCTIONAL MODAL -->
+  <div id="helpModal" class="no-print fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border-2 border-amber-500 rounded-2xl max-w-xl w-full p-6 shadow-2xl relative text-slate-100">
+      <button onclick="closeHelpModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+      
+      <div class="flex items-center gap-3 border-b border-slate-800 pb-3 mb-4">
+        <i class="fa-solid fa-pen-nib text-amber-400 text-2xl"></i>
+        <h3 class="font-oswald text-xl font-bold text-amber-400">HOW TO EDIT & PUBLISH YOUR NEWSLETTER</h3>
+      </div>
+
+      <ol class="space-y-4 text-xs text-slate-300">
+        <li class="flex items-start gap-3 bg-slate-950 p-3 rounded-lg border border-slate-800">
+          <span class="bg-amber-500 text-slate-950 font-bold rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0">1</span>
+          <div>
+            <strong class="text-white block mb-0.5">Turn on Admin Mode:</strong>
+            Click the <span class="text-sky-400 font-semibold"><i class="fa-solid fa-pen-to-square"></i> Admin Mode: OFF</span> button in the top menu bar. The button will glow gold and editable text will display a blue dashed outline.
+          </div>
+        </li>
+        <li class="flex items-start gap-3 bg-slate-950 p-3 rounded-lg border border-slate-800">
+          <span class="bg-amber-500 text-slate-950 font-bold rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0">2</span>
+          <div>
+            <strong class="text-white block mb-0.5">Click & Edit Text Directly:</strong>
+            Click directly on any title, schedule item, bullet point, or quote on the page to edit text in real-time.
+          </div>
+        </li>
+        <li class="flex items-start gap-3 bg-slate-950 p-3 rounded-lg border border-slate-800">
+          <span class="bg-amber-500 text-slate-950 font-bold rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0">3</span>
+          <div>
+            <strong class="text-white block mb-0.5">Add or Delete Bullet Points:</strong>
+            In Admin Mode, green <span class="text-emerald-400 font-bold">+ Add Item</span> and red <span class="text-rose-400 font-bold">✕ Delete</span> buttons will appear on daily schedules and housekeeping lists.
+          </div>
+        </li>
+        <li class="flex items-start gap-3 bg-slate-950 p-3 rounded-lg border border-slate-800">
+          <span class="bg-amber-500 text-slate-950 font-bold rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0">4</span>
+          <div>
+            <strong class="text-white block mb-0.5">Save & Publish Changes:</strong>
+            Click the <span class="bg-amber-500 text-slate-950 font-bold px-1.5 py-0.5 rounded text-[10px]">💾 Save & Publish</span> button to store your changes in the local database archive for that selected week.
+          </div>
+        </li>
+      </ol>
+
+      <button onclick="closeHelpModal()" class="w-full mt-5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 rounded-xl text-xs transition">
+        Got It! Start Editing
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN CANVAS AREA -->
+  <main class="flex-grow flex flex-col items-center py-8 px-4 overflow-x-auto">
+    <div id="newsletterCanvas" class="flex flex-col gap-10 items-center">
+
+      <!-- ========================================== -->
+      <!-- PAGE 1: COMING SOON (CINEMA / MARQUEE) -->
+      <!-- ========================================== -->
+      <section id="page1" class="page-slide newsletter-page bg-slate-900 border-4 border-amber-500/80 rounded-2xl p-8 relative flex flex-col justify-between overflow-hidden text-slate-100">
+        
+        <!-- Marquee Header Box -->
+        <div class="relative bg-slate-950 border-4 border-amber-500 rounded-xl p-5 shadow-2xl overflow-hidden">
+          
+          <!-- Animated Bulb Lights Top Edge -->
+          <div class="absolute top-1 left-0 right-0 flex justify-around px-4">
+            <span class="bulb-light w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <span class="bulb-light w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <span class="bulb-light w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <span class="bulb-light w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <span class="bulb-light w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <span class="bulb-light w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <span class="bulb-light w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <span class="bulb-light w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          </div>
+
+          <div class="flex items-center justify-between mt-1">
+            <div class="flex items-center gap-4">
+              <div class="bg-amber-500/10 p-3 rounded-full border border-amber-500/30">
+                <i class="fa-solid fa-film text-3xl text-amber-400"></i>
+              </div>
+              <div>
+                <h2 id="p1-title" class="editable-field font-oswald text-3xl font-extrabold text-amber-400 tracking-wider uppercase leading-none" contenteditable="false">
+                  ★ COMING SOON: THIS WEEK AT IS 206 B ★
+                </h2>
+                <div class="flex items-center gap-3 mt-1.5 text-xs font-semibold text-slate-400">
+                  <span id="p1-subtitle" class="editable-field" contenteditable="false">WEEKLY BULLETIN & FEATURE PRESENTATIONS</span>
+                  <span>•</span>
+                  <span id="p1-weekLabel" class="editable-field text-amber-300 font-bold" contenteditable="false">WEEK OF OCT 26, 2026</span>
+                </div>
+              </div>
+            </div>
+            
+            <img src="https://lh3.googleusercontent.com/gg/ACRwjatTTRy7P4X_JCKvO8eHBzTgY_1qNK9qG3UGsVEcUmb1xLEU03fGaTjZ5UlXLTUyMhDUJiyT-uyeiza-4m31T4otRSwdsp34LPZ9UxGDLLq33dirblteE_g4hQzTXlcMx_f9U29D9DIkGt_FSJlt-D26EUZhLB1OjtUJxEoI42isT21MJn7t-BkzpeWiI8Hsf5x0CyRNpkBIywOOEKV-xJ9mF1byDIrQ1kS8qu1d8UoWFlUO4DzztcenbWk0dDeyadYIXGjLS_Z5Zg5MtSzNaTuxZYCsQrKdwkk=s0" 
+                 alt="IS 206 B Logo" class="h-14 w-auto object-contain drop-shadow">
+          </div>
+        </div>
+
+        <!-- Cinema Layout Content Grid -->
+        <div class="grid grid-cols-12 gap-6 my-5 flex-grow">
+          
+          <!-- Monday - Friday Feature Schedule -->
+          <div class="col-span-7 bg-slate-950/90 rounded-xl p-5 border border-slate-800 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b-2 border-amber-500/80 pb-2 mb-3">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-clapperboard text-amber-400 text-base"></i>
+                  <h3 class="font-oswald text-lg font-bold tracking-wide text-slate-100">FEATURE PRESENTATIONS SCHEDULE</h3>
+                </div>
+                <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded font-bold uppercase tracking-wider">DAILY AGENDA</span>
+              </div>
+
+              <!-- Days List Container -->
+              <div id="p1-schedule-list" class="space-y-2.5">
+                
+                <!-- Monday -->
+                <div class="p-2 rounded-lg bg-slate-900 border-l-4 border-sky-400">
+                  <div class="flex items-center justify-between">
+                    <span class="font-oswald text-xs font-bold text-sky-400 tracking-wider">MONDAY</span>
+                    <button class="admin-only hidden text-emerald-400 hover:text-emerald-300 text-[10px] font-bold" onclick="addScheduleItem('p1-mon-items')">+ Add Item</button>
+                  </div>
+                  <ul id="p1-mon-items" class="text-xs space-y-1 text-slate-200 mt-1">
+                    <li class="flex items-start justify-between group">
+                      <span class="editable-field" contenteditable="false">• Department Meetings @ 8:00 AM | Grade 6 PLC Planning</span>
+                      <button class="admin-only hidden text-rose-400 text-xs px-1" onclick="deleteBullet(this)">✕</button>
+                    </li>
+                    <li class="flex items-start justify-between group">
+                      <span class="editable-field" contenteditable="false">• Math Manipulatives Distribution in Room 204</span>
+                      <button class="admin-only hidden text-rose-400 text-xs px-1" onclick="deleteBullet(this)">✕</button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Tuesday -->
+                <div class="p-2 rounded-lg bg-slate-900 border-l-4 border-amber-400">
+                  <div class="flex items-center justify-between">
+                    <span class="font-oswald text-xs font-bold text-amber-400 tracking-wider">TUESDAY</span>
+                    <button class="admin-only hidden text-emerald-400 hover:text-emerald-300 text-[10px] font-bold" onclick="addScheduleItem('p1-tue-items')">+ Add Item</button>
+                  </div>
+                  <ul id="p1-tue-items" class="text-xs space-y-1 text-slate-200 mt-1">
+                    <li class="flex items-start justify-between group">
+                      <span class="editable-field" contenteditable="false">• Staff PD: Scaffolding Literacy Across Content Areas</span>
+                      <button class="admin-only hidden text-rose-400 text-xs px-1" onclick="deleteBullet(this)">✕</button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Wednesday -->
+                <div class="p-2 rounded-lg bg-slate-900 border-l-4 border-emerald-400">
+                  <div class="flex items-center justify-between">
+                    <span class="font-oswald text-xs font-bold text-emerald-400 tracking-wider">WEDNESDAY</span>
+                    <button class="admin-only hidden text-emerald-400 hover:text-emerald-300 text-[10px] font-bold" onclick="addScheduleItem('p1-wed-items')">+ Add Item</button>
+                  </div>
+                  <ul id="p1-wed-items" class="text-xs space-y-1 text-slate-200 mt-1">
+                    <li class="flex items-start justify-between group">
+                      <span class="editable-field" contenteditable="false">• After-School Academic Tutoring Session Kickoff</span>
+                      <button class="admin-only hidden text-rose-400 text-xs px-1" onclick="deleteBullet(this)">✕</button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Thursday -->
+                <div class="p-2 rounded-lg bg-slate-900 border-l-4 border-purple-400">
+                  <div class="flex items-center justify-between">
+                    <span class="font-oswald text-xs font-bold text-purple-400 tracking-wider">THURSDAY</span>
+                    <button class="admin-only hidden text-emerald-400 hover:text-emerald-300 text-[10px] font-bold" onclick="addScheduleItem('p1-thu-items')">+ Add Item</button>
+                  </div>
+                  <ul id="p1-thu-items" class="text-xs space-y-1 text-slate-200 mt-1">
+                    <li class="flex items-start justify-between group">
+                      <span class="editable-field" contenteditable="false">• Student Council Elections & Homeroom Voting</span>
+                      <button class="admin-only hidden text-rose-400 text-xs px-1" onclick="deleteBullet(this)">✕</button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Friday -->
+                <div class="p-2 rounded-lg bg-slate-900 border-l-4 border-rose-400">
+                  <div class="flex items-center justify-between">
+                    <span class="font-oswald text-xs font-bold text-rose-400 tracking-wider">FRIDAY</span>
+                    <button class="admin-only hidden text-emerald-400 hover:text-emerald-300 text-[10px] font-bold" onclick="addScheduleItem('p1-fri-items')">+ Add Item</button>
+                  </div>
+                  <ul id="p1-fri-items" class="text-xs space-y-1 text-slate-200 mt-1">
+                    <li class="flex items-start justify-between group">
+                      <span class="editable-field" contenteditable="false">• Shark Spirit Day! Wear Navy & Blue Apparel</span>
+                      <button class="admin-only hidden text-rose-400 text-xs px-1" onclick="deleteBullet(this)">✕</button>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Now Showing Box -->
+          <div class="col-span-5 flex flex-col gap-4">
+            
+            <div class="bg-slate-950/90 rounded-xl p-5 border border-amber-500/50 flex-grow flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-2 border-b-2 border-amber-500 pb-2 mb-3">
+                  <i class="fa-solid fa-ticket text-amber-400 text-lg"></i>
+                  <h3 class="font-oswald text-lg font-bold tracking-wide text-amber-400">NOW SHOWING: MAIN EVENTS</h3>
+                </div>
+
+                <div id="p1-now-showing-list" class="space-y-3">
+                  <div class="bg-slate-900/90 border border-amber-500/30 p-3 rounded-lg relative">
+                    <p class="editable-field text-amber-300 font-bold text-xs uppercase" contenteditable="false">🎬 Benchmark Assessment Window</p>
+                    <p class="editable-field text-slate-300 text-xs mt-1 leading-snug" contenteditable="false">Ensure testing accommodations are finalized in student IEP portals prior to Thursday.</p>
+                    <button class="admin-only hidden text-rose-400 text-xs absolute top-2 right-2" onclick="deleteParentCard(this)">✕</button>
+                  </div>
+
+                  <div class="bg-slate-900/90 border border-sky-500/30 p-3 rounded-lg relative">
+                    <p class="editable-field text-sky-300 font-bold text-xs uppercase" contenteditable="false">🎟️ Fall Pep Rally & Mascot Visit</p>
+                    <p class="editable-field text-slate-300 text-xs mt-1 leading-snug" contenteditable="false">Assembly schedule runs Friday afternoon. Dismissal rosters will be shared in homeroom folders.</p>
+                    <button class="admin-only hidden text-rose-400 text-xs absolute top-2 right-2" onclick="deleteParentCard(this)">✕</button>
+                  </div>
+                </div>
+
+                <button class="admin-only hidden w-full mt-3 bg-slate-800 hover:bg-slate-700 text-amber-400 text-xs py-1.5 rounded border border-slate-700 font-semibold" onclick="addNowShowingCard()">
+                  + Add Feature Announcement
+                </button>
+              </div>
+
+              <!-- Mascot Badge Box -->
+              <div class="mt-4 bg-gradient-to-r from-slate-900 to-sky-950 p-3 rounded-lg border border-sky-800/50 flex items-center gap-3">
+                <i class="fa-solid fa-fish-fins text-sky-400 text-2xl"></i>
+                <div class="text-xs">
+                  <span class="text-sky-300 font-bold block">SHARK SPIRIT CORNER</span>
+                  <span class="text-slate-400">Lead with pride, rigor, and respect!</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Page 1 Footer -->
+        <div class="bg-slate-950 rounded-xl p-2.5 border border-slate-800 flex items-center justify-between text-xs text-slate-400">
+          <span class="font-oswald font-bold text-slate-200 tracking-wider">IS 206 B SHARKS • ANN CROSS MERSEREAU</span>
+          <span class="text-amber-400 font-semibold">"WHERE EFFORT BECOMES EXCELLENCE"</span>
+        </div>
+
+      </section>
+
+      <!-- ========================================== -->
+      <!-- PAGE 2: HOUSEKEEPING CORNER -->
+      <!-- ========================================== -->
+      <section id="page2" class="page-slide newsletter-page bg-slate-50 border-4 border-slate-300 rounded-2xl p-8 relative flex flex-col justify-between overflow-hidden text-slate-900">
+        
+        <!-- Top Deep Navy Header -->
+        <div class="bg-navy-800 rounded-xl p-4 shadow-lg flex items-center justify-between border-b-4 border-sky-500 text-white">
+          <div class="flex items-center gap-4">
+            <div class="bg-navy-900 p-3 rounded-lg border border-sky-400/30">
+              <i class="fa-solid fa-clipboard-check text-3xl text-sky-400"></i>
+            </div>
+            <div>
+              <h2 id="p2-title" class="editable-field font-oswald text-2xl font-bold tracking-wide text-white uppercase" contenteditable="false">
+                HOUSEKEEPING CORNER
+              </h2>
+              <p id="p2-subtitle" class="editable-field text-sky-300 text-xs font-semibold tracking-wider uppercase mt-0.5" contenteditable="false">
+                PROFESSIONAL STANDARDS • CAMPUS VIGILANCE • WEEKLY REMINDERS
+              </p>
+            </div>
+          </div>
+
+          <img src="https://lh3.googleusercontent.com/gg/ACRwjatTTRy7P4X_JCKvO8eHBzTgY_1qNK9qG3UGsVEcUmb1xLEU03fGaTjZ5UlXLTUyMhDUJiyT-uyeiza-4m31T4otRSwdsp34LPZ9UxGDLLq33dirblteE_g4hQzTXlcMx_f9U29D9DIkGt_FSJlt-D26EUZhLB1OjtUJxEoI42isT21MJn7t-BkzpeWiI8Hsf5x0CyRNpkBIywOOEKV-xJ9mF1byDIrQ1kS8qu1d8UoWFlUO4DzztcenbWk0dDeyadYIXGjLS_Z5Zg5MtSzNaTuxZYCsQrKdwkk=s0" 
+               alt="IS 206 B Logo" class="h-12 w-auto object-contain">
+        </div>
+
+        <!-- Housekeeping Content Grid -->
+        <div class="grid grid-cols-12 gap-6 my-5 flex-grow">
+          
+          <!-- Left Column: Checklists -->
+          <div class="col-span-8 space-y-4 flex flex-col justify-between">
+            
+            <!-- Professional Expectations -->
+            <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+              <div class="flex items-center justify-between border-b-2 border-navy-800 pb-2 mb-3">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-user-check text-navy-800 text-base"></i>
+                  <h3 class="font-oswald text-base font-bold text-navy-800 tracking-wide">PROFESSIONAL EXPECTATIONS</h3>
+                </div>
+                <button class="admin-only hidden text-emerald-600 hover:text-emerald-800 text-xs font-bold" onclick="addHousekeepingBullet('p2-prof-list')">+ Add Point</button>
+              </div>
+
+              <ul id="p2-prof-list" class="space-y-2 text-xs text-slate-700">
+                <li class="flex items-start justify-between gap-2 group">
+                  <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-sky-600 mt-0.5"></i>
+                    <span class="editable-field" contenteditable="false"><b>Punctuality & Transitions:</b> Stand at classroom doors during class transitions to greet students and maintain hallway flow.</span>
+                  </div>
+                  <button class="admin-only hidden text-rose-500 text-xs" onclick="deleteBullet(this)">✕</button>
+                </li>
+                <li class="flex items-start justify-between gap-2 group">
+                  <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-sky-600 mt-0.5"></i>
+                    <span class="editable-field" contenteditable="false"><b>Gradebook Currency:</b> All weekly grades must be updated by Friday at 4:00 PM for guardian visibility.</span>
+                  </div>
+                  <button class="admin-only hidden text-rose-500 text-xs" onclick="deleteBullet(this)">✕</button>
+                </li>
+                <li class="flex items-start justify-between gap-2 group">
+                  <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-sky-600 mt-0.5"></i>
+                    <span class="editable-field" contenteditable="false"><b>Classroom Reset:</b> Remind final period classes to stack chairs and clean floor areas prior to dismissal.</span>
+                  </div>
+                  <button class="admin-only hidden text-rose-500 text-xs" onclick="deleteBullet(this)">✕</button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Vigilance & Hallway Safety -->
+            <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+              <div class="flex items-center justify-between border-b-2 border-amber-500 pb-2 mb-3">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-shield-halved text-amber-600 text-base"></i>
+                  <h3 class="font-oswald text-base font-bold text-navy-800 tracking-wide">VIGILANCE & CAMPUS SAFETY</h3>
+                </div>
+                <button class="admin-only hidden text-emerald-600 hover:text-emerald-800 text-xs font-bold" onclick="addHousekeepingBullet('p2-vigilance-list')">+ Add Point</button>
+              </div>
+
+              <ul id="p2-vigilance-list" class="space-y-2 text-xs text-slate-700">
+                <li class="flex items-start justify-between gap-2 group">
+                  <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-500 mt-0.5"></i>
+                    <span class="editable-field" contenteditable="false"><b>Hall Pass Protocol:</b> No hall passes issued during first or last 10 minutes of period. Only one student out per pass.</span>
+                  </div>
+                  <button class="admin-only hidden text-rose-500 text-xs" onclick="deleteBullet(this)">✕</button>
+                </li>
+                <li class="flex items-start justify-between gap-2 group">
+                  <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-500 mt-0.5"></i>
+                    <span class="editable-field" contenteditable="false"><b>Visitor ID Check:</b> Promptly direct unbadged visitors to Main Office. Campus safety is a collective priority.</span>
+                  </div>
+                  <button class="admin-only hidden text-rose-500 text-xs" onclick="deleteBullet(this)">✕</button>
+                </li>
+                <li class="flex items-start justify-between gap-2 group">
+                  <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-500 mt-0.5"></i>
+                    <span class="editable-field" contenteditable="false"><b>Chromebook Monitoring:</b> Actively circulate during student digital tasks to support academic focus.</span>
+                  </div>
+                  <button class="admin-only hidden text-rose-500 text-xs" onclick="deleteBullet(this)">✕</button>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Teacher Spotlight Card -->
+          <div class="col-span-4 bg-white border-2 border-sky-200 rounded-xl p-4 shadow-sm flex flex-col items-center text-center justify-between relative">
+            
+            <div class="w-full">
+              <div class="bg-navy-800 text-amber-400 font-oswald text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-3">
+                ★ TEACHER OF THE WEEK ★
+              </div>
+
+              <!-- Profile Avatar -->
+              <div class="relative group mx-auto mb-3">
+                <img id="p2-teacherImg" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80" 
+                     alt="Teacher Photo" class="w-24 h-24 rounded-full object-cover border-4 border-sky-500 shadow-md mx-auto">
+                
+                <button class="admin-only hidden absolute bottom-0 right-1/4 bg-slate-900 text-sky-400 text-[10px] px-2 py-0.5 rounded-full shadow border border-slate-700" onclick="promptTeacherImage()">
+                  📷 Change
+                </button>
+              </div>
+
+              <h4 id="p2-teacherName" class="editable-field font-oswald text-lg font-bold text-navy-800" contenteditable="false">
+                Ms. Sarah Jenkins
+              </h4>
+              <p id="p2-teacherDept" class="editable-field text-sky-600 font-semibold text-xs mb-2" contenteditable="false">
+                7th Grade Mathematics Lead
+              </p>
+
+              <div class="bg-slate-50 border border-slate-200 p-3 rounded-lg text-left text-xs italic text-slate-700 leading-relaxed relative">
+                <i class="fa-solid fa-quote-left text-sky-300 text-base absolute -top-2 left-2 opacity-50"></i>
+                <p id="p2-teacherQuote" class="editable-field pt-1 text-slate-800" contenteditable="false">
+                  "Recognized for her innovative algebra learning stations and unwavering dedication during after-school tutoring. Thank you for making math accessible for all Sharks!"
+                </p>
+              </div>
+            </div>
+
+            <div class="w-full mt-2 pt-2 border-t border-slate-100 flex items-center justify-center gap-1 text-amber-500 text-xs font-bold">
+              <i class="fa-solid fa-star"></i>
+              <span class="text-navy-800 font-oswald tracking-wide mx-1 text-xs">EXCELLENCE IN ACTION</span>
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Page 2 Footer -->
+        <div class="border-t border-slate-200 pt-2 flex items-center justify-between text-xs text-slate-500 font-medium">
+          <span>IS 206 B Sharks • Ann Cross Mersereau</span>
+          <span class="text-navy-800 font-bold">Building a Supportive Culture for Academic Excellence</span>
+        </div>
+
+      </section>
+
+      <!-- ========================================== -->
+      <!-- PAGE 3: WHERE EFFORT BECOMES EXCELLENCE -->
+      <!-- ========================================== -->
+      <section id="page3" class="page-slide newsletter-page bg-white border-4 border-sky-700 rounded-2xl p-8 relative flex flex-col justify-between overflow-hidden text-slate-900 shadow-xl">
+        
+        <!-- Official Banner Graphic -->
+        <div class="w-full flex justify-center mb-2">
+          <img src="https://lh3.googleusercontent.com/gg/ACRwjauyuzj4YHsXCBoLxkIzb8qwEWz5QmXH_H9vDk2IBjVJqftfrKoYrXQLlakokMiI8nugDG1MCEruCsUS0W7aVQfOn8gQrZfqQYK5mZgpoa-6_6K6JIIJT9rIUPN9u4xDJ194keIVt2--uQivvC-lw3lylRFt2LdeSYXaA6oGsCpKgwQNCdJKCqmPhwci-Z8W19ffQ_AjlqJB7QohBJa6DXy_F6EF-SDOhtw3kL_UShcNBEa8ZeCx1kAchi6Rg2ShuGZggM75N5cvhB08SysH7KKI4j7mIMwvQAk=s0" 
+               alt="IS 206 B Banner" class="max-h-20 w-auto object-contain drop-shadow">
+        </div>
+
+        <!-- Motto Bar -->
+        <div class="bg-navy-800 text-white p-2 rounded-lg text-center font-oswald text-xs font-bold tracking-widest uppercase mb-3 shadow">
+          ★ EDUCATIONAL RESEARCH, ARTICLES & PROFESSIONAL REFLECTION ★
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-12 gap-5 my-2 flex-grow">
+          
+          <!-- Wisdom from the Field -->
+          <div class="col-span-7 bg-slate-50 border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 border-b-2 border-sky-600 pb-2 mb-3">
+                <i class="fa-solid fa-book-open-reader text-sky-600 text-base"></i>
+                <h3 class="font-oswald text-lg font-bold text-navy-800 tracking-wide">WISDOM FROM THE FIELD</h3>
+              </div>
+
+              <div class="space-y-3">
+                <p id="p3-articleTitle" class="editable-field font-semibold text-xs text-sky-700 uppercase tracking-wider" contenteditable="false">
+                  Excerpt: "The Skill & Will of Middle School Mastery" (Dr. L. H. Carter, 2024)
+                </p>
+
+                <blockquote class="bg-white border-l-4 border-sky-600 p-3 rounded-r-lg shadow-sm font-serif italic text-xs text-slate-800 leading-relaxed">
+                  <p id="p3-excerptText" class="editable-field" contenteditable="false">
+                    "High expectations combined with targeted scaffolded support transform initial student effort into durable learning outcomes. When educators explicitly frame mistakes as cognitive growth milestones, middle school students demonstrate a 35% increase in academic perseverance across disciplines."
+                  </p>
+                </blockquote>
+
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-2.5 text-xs text-amber-900 flex items-start gap-2">
+                  <i class="fa-solid fa-lightbulb text-amber-500 text-sm mt-0.5"></i>
+                  <div>
+                    <span class="font-bold block text-[11px]">Classroom Application Takeaway:</span>
+                    <span id="p3-takeaway" class="editable-field" contenteditable="false">Praise specific effort strategies ("I noticed how you used the graphic organizer to break down that problem") rather than innate speed or talent.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-right text-[10px] text-slate-400 italic">
+              IS 206 B Professional Library Selection
+            </div>
+          </div>
+
+          <!-- Study Findings & PLC Reflection -->
+          <div class="col-span-5 flex flex-col gap-3">
+            
+            <!-- Study Findings Card -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 shadow-sm flex-1">
+              <div class="flex items-center gap-2 border-b-2 border-navy-800 pb-1 mb-2">
+                <i class="fa-solid fa-chart-line text-navy-800 text-sm"></i>
+                <h3 class="font-oswald text-sm font-bold text-navy-800">SPOTLIGHT STUDY FINDINGS</h3>
+              </div>
+              <p id="p3-studyText" class="editable-field text-xs text-slate-700 leading-relaxed" contenteditable="false">
+                Recent meta-analysis shows that <b>10 minutes of weekly collaborative metacognitive reflection</b> leads to significant improvements in student conceptual retention and test performance across both STEM and Humanities subjects.
+              </p>
+            </div>
+
+            <!-- PLC Reflection Question Box -->
+            <div class="bg-navy-800 text-white border border-navy-900 rounded-xl p-3.5 shadow-sm flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-2 border-b border-sky-400/40 pb-1 mb-2">
+                  <i class="fa-solid fa-comments text-amber-400 text-sm"></i>
+                  <h3 class="font-oswald text-sm font-bold text-amber-400">PLC DISCUSSION PROMPT</h3>
+                </div>
+                <p id="p3-plcPrompt" class="editable-field text-xs text-slate-200 leading-relaxed italic" contenteditable="false">
+                  "In our upcoming department meeting, how can we refine our rubrics to explicitly measure and celebrate 'student effort and growth' alongside final product mastery?"
+                </p>
+              </div>
+              <span class="text-[9px] text-sky-300 font-semibold tracking-wider uppercase mt-1 block text-right">★ Grade Team Discussion Starter</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SVG Ocean Wave Accent Footer -->
+        <div class="mt-2 pt-1 border-t border-slate-200 flex flex-col gap-1">
+          <svg class="w-full h-3 rounded text-navy-800" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="#002855"></path>
+          </svg>
+          <div class="flex justify-between items-center text-[10px] text-slate-500 font-bold px-1">
+            <span>ANN CROSS MERSEREAU MIDDLE SCHOOL</span>
+            <span class="text-sky-700 font-oswald uppercase tracking-widest">WHERE EFFORT BECOMES EXCELLENCE</span>
+            <span>VOLUME 12 • 2026</span>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- JAVASCRIPT APP LOGIC -->
+  <script>
+    // Initial Weekly Database Archives
+    const defaultArchives = {
+      "week_2026_10_26": {
+        id: "week_2026_10_26",
+        title: "Week of Oct 26, 2026 (Vol. 9)",
+        p1Title: "★ COMING SOON: THIS WEEK AT IS 206 B ★",
+        p1Subtitle: "WEEKLY BULLETIN & FEATURE PRESENTATIONS",
+        p1WeekLabel: "WEEK OF OCT 26, 2026",
+        p2TeacherName: "Ms. Sarah Jenkins",
+        p2TeacherDept: "7th Grade Mathematics Lead",
+        p2TeacherQuote: "Recognized for her innovative algebra learning stations and unwavering dedication during after-school tutoring. Thank you for making math accessible for all Sharks!",
+        p2TeacherImg: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80",
+        p3ArticleTitle: 'Excerpt: "The Skill & Will of Middle School Mastery" (Dr. L. H. Carter, 2024)',
+        p3ExcerptText: '"High expectations combined with targeted scaffolded support transform initial student effort into durable learning outcomes. When educators explicitly frame mistakes as cognitive growth milestones, middle school students demonstrate a 35% increase in academic perseverance across disciplines."',
+        p3Takeaway: 'Praise specific effort strategies ("I noticed how you used the graphic organizer to break down that problem") rather than innate speed or talent.',
+        p3StudyText: 'Recent meta-analysis shows that 10 minutes of weekly collaborative metacognitive reflection leads to significant improvements in student conceptual retention and test performance across both STEM and Humanities subjects.',
+        p3PlcPrompt: '"In our upcoming department meeting, how can we refine our rubrics to explicitly measure and celebrate \'student effort and growth\' alongside final product mastery?"'
+      },
+      "week_2026_10_19": {
+        id: "week_2026_10_19",
+        title: "Week of Oct 19, 2026 (Vol. 8)",
+        p1Title: "★ COMING SOON: THIS WEEK AT IS 206 B ★",
+        p1Subtitle: "FALL SPIRIT & ACADEMIC UPDATES",
+        p1WeekLabel: "WEEK OF OCT 19, 2026",
+        p2TeacherName: "Mr. Marcus Rivera",
+        p2TeacherDept: "8th Grade Science & Robotics Lead",
+        p2TeacherQuote: "Shoutout to Mr. Rivera for organizing the STEM lab showcase and guiding our 8th graders through interactive physics experiments with high enthusiasm!",
+        p2TeacherImg: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80",
+        p3ArticleTitle: 'Excerpt: "Building Collaborative STEM Classrooms"',
+        p3ExcerptText: '"When students work in structured inquiry roles, peer accountability naturally elevates individual mastery."',
+        p3Takeaway: 'Assign clear, rotating group roles during lab activities to maximize student involvement.',
+        p3StudyText: 'Formative feedback delivered within 24 hours increases student revision quality by over 40%.',
+        p3PlcPrompt: '"How can we align our peer assessment tools across grade levels?"'
+      }
+    };
+
+    let activeWeekId = "week_2026_10_26";
+    let isAdminMode = false;
+    let archives = { ...defaultArchives };
+
+    // Initialize Application
+    window.addEventListener('DOMContentLoaded', () => {
+      loadArchivesFromStorage();
+      populateWeekDropdown();
+      loadSelectedWeek();
+    });
+
+    // Local Storage Functions
+    function loadArchivesFromStorage() {
+      try {
+        const stored = localStorage.getItem('is206b_newsletter_archives');
+        if (stored) {
+          archives = JSON.parse(stored);
+        }
+      } catch (e) {
+        console.warn('LocalStorage unavailable:', e);
+      }
+    }
+
+    function saveArchivesToStorage() {
+      try {
+        localStorage.setItem('is206b_newsletter_archives', JSON.stringify(archives));
+      } catch (e) {
+        console.warn('Could not save to LocalStorage:', e);
+      }
+    }
+
+    // Populate Week Select Options
+    function populateWeekDropdown() {
+      const select = document.getElementById('weekSelect');
+      select.innerHTML = '';
+      Object.keys(archives).forEach(key => {
+        const opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = archives[key].title;
+        if (key === activeWeekId) opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+
+    // Load Data for Selected Week Edition
+    function loadSelectedWeek() {
+      const select = document.getElementById('weekSelect');
+      activeWeekId = select.value;
+      const data = archives[activeWeekId];
+      if (!data) return;
+
+      if (data.p1Title) document.getElementById('p1-title').innerText = data.p1Title;
+      if (data.p1Subtitle) document.getElementById('p1-subtitle').innerText = data.p1Subtitle;
+      if (data.p1WeekLabel) document.getElementById('p1-weekLabel').innerText = data.p1WeekLabel;
+      
+      if (data.p2TeacherName) document.getElementById('p2-teacherName').innerText = data.p2TeacherName;
+      if (data.p2TeacherDept) document.getElementById('p2-teacherDept').innerText = data.p2TeacherDept;
+      if (data.p2TeacherQuote) document.getElementById('p2-teacherQuote').innerText = data.p2TeacherQuote;
+      if (data.p2TeacherImg) document.getElementById('p2-teacherImg').src = data.p2TeacherImg;
+
+      if (data.p3ArticleTitle) document.getElementById('p3-articleTitle').innerText = data.p3ArticleTitle;
+      if (data.p3ExcerptText) document.getElementById('p3-excerptText').innerText = data.p3ExcerptText;
+      if (data.p3Takeaway) document.getElementById('p3-takeaway').innerText = data.p3Takeaway;
+      if (data.p3StudyText) document.getElementById('p3-studyText').innerText = data.p3StudyText;
+      if (data.p3PlcPrompt) document.getElementById('p3-plcPrompt').innerText = data.p3PlcPrompt;
+
+      showToast(`Loaded ${data.title}`);
+    }
+
+    // Tab Navigation
+    function switchTab(tabNum) {
+      const p1 = document.getElementById('page1');
+      const p2 = document.getElementById('page2');
+      const p3 = document.getElementById('page3');
+
+      ['tab-p1', 'tab-p2', 'tab-p3', 'tab-all'].forEach(id => {
+        const btn = document.getElementById(id);
+        btn.classList.remove('bg-slate-800', 'text-amber-400', 'font-bold');
+        btn.classList.add('text-slate-400');
+      });
+
+      if (tabNum === 1) {
+        p1.style.display = 'flex';
+        p2.style.display = 'none';
+        p3.style.display = 'none';
+        document.getElementById('tab-p1').classList.add('bg-slate-800', 'text-amber-400', 'font-bold');
+      } else if (tabNum === 2) {
+        p1.style.display = 'none';
+        p2.style.display = 'flex';
+        p3.style.display = 'none';
+        document.getElementById('tab-p2').classList.add('bg-slate-800', 'text-amber-400', 'font-bold');
+      } else if (tabNum === 3) {
+        p1.style.display = 'none';
+        p2.style.display = 'none';
+        p3.style.display = 'flex';
+        document.getElementById('tab-p3').classList.add('bg-slate-800', 'text-amber-400', 'font-bold');
+      } else {
+        p1.style.display = 'flex';
+        p2.style.display = 'flex';
+        p3.style.display = 'flex';
+        document.getElementById('tab-all').classList.add('bg-slate-800', 'text-amber-400', 'font-bold');
+      }
+    }
+
+    // Toggle Admin Editing Mode
+    function toggleAdminMode() {
+      isAdminMode = !isAdminMode;
+      const body = document.body;
+      const btn = document.getElementById('modeToggleBtn');
+      const modeText = document.getElementById('modeText');
+      const editableFields = document.querySelectorAll('.editable-field');
+      const adminOnlyElements = document.querySelectorAll('.admin-only');
+
+      if (isAdminMode) {
+        body.classList.add('admin-mode');
+        modeText.innerText = "Admin Mode: ON";
+        btn.classList.remove('bg-slate-800');
+        btn.classList.add('bg-amber-500', 'text-slate-950', 'font-bold');
+        
+        editableFields.forEach(el => el.setAttribute('contenteditable', 'true'));
+        adminOnlyElements.forEach(el => el.classList.remove('hidden'));
+        showToast("✏️ Admin Mode ON! Click any text to edit.");
+      } else {
+        body.classList.remove('admin-mode');
+        modeText.innerText = "Admin Mode: OFF";
+        btn.classList.remove('bg-amber-500', 'text-slate-950', 'font-bold');
+        btn.classList.add('bg-slate-800');
+
+        editableFields.forEach(el => el.setAttribute('contenteditable', 'false'));
+        adminOnlyElements.forEach(el => el.classList.add('hidden'));
+        showToast("👁️ Switched to Read-Only Mode");
+      }
+    }
+
+    // Add / Remove List Items
+    function addScheduleItem(listId) {
+      const list = document.getElementById(listId);
+      if (!list) return;
+      const li = document.createElement('li');
+      li.className = "flex items-start justify-between group";
+      li.innerHTML = `
+        <span class="editable-field" contenteditable="${isAdminMode}">• New Schedule Event Item</span>
+        <button class="admin-only ${isAdminMode ? '' : 'hidden'} text-rose-400 text-xs px-1" onclick="deleteBullet(this)">✕</button>
+      `;
+      list.appendChild(li);
+    }
+
+    function addHousekeepingBullet(listId) {
+      const list = document.getElementById(listId);
+      if (!list) return;
+      const li = document.createElement('li');
+      li.className = "flex items-start justify-between gap-2 group";
+      li.innerHTML = `
+        <div class="flex items-start gap-2">
+          <i class="fa-solid fa-circle-check text-sky-600 mt-0.5"></i>
+          <span class="editable-field" contenteditable="${isAdminMode}"><b>New Reminder:</b> Add description here.</span>
+        </div>
+        <button class="admin-only ${isAdminMode ? '' : 'hidden'} text-rose-500 text-xs" onclick="deleteBullet(this)">✕</button>
+      `;
+      list.appendChild(li);
+    }
+
+    function addNowShowingCard() {
+      const container = document.getElementById('p1-now-showing-list');
+      if (!container) return;
+      const card = document.createElement('div');
+      card.className = "bg-slate-900/90 border border-amber-500/30 p-3 rounded-lg relative";
+      card.innerHTML = `
+        <p class="editable-field text-amber-300 font-bold text-xs uppercase" contenteditable="${isAdminMode}">🍿 New Event Announcement</p>
+        <p class="editable-field text-slate-300 text-xs mt-1 leading-snug" contenteditable="${isAdminMode}">Enter details and guidelines for teachers and staff.</p>
+        <button class="admin-only ${isAdminMode ? '' : 'hidden'} text-rose-400 text-xs absolute top-2 right-2" onclick="deleteParentCard(this)">✕</button>
+      `;
+      container.appendChild(card);
+    }
+
+    function deleteBullet(btn) {
+      const li = btn.closest('li');
+      if (li) li.remove();
+    }
+
+    function deleteParentCard(btn) {
+      const card = btn.parentElement;
+      if (card) card.remove();
+    }
+
+    function promptTeacherImage() {
+      const currentSrc = document.getElementById('p2-teacherImg').src;
+      const url = prompt("Enter image URL for Teacher of the Week:", currentSrc);
+      if (url) {
+        document.getElementById('p2-teacherImg').src = url;
+      }
+    }
+
+    // Save and Publish Edition
+    function publishEdition() {
+      const editionData = {
+        id: activeWeekId,
+        title: archives[activeWeekId]?.title || `Week Edition`,
+        p1Title: document.getElementById('p1-title').innerText,
+        p1Subtitle: document.getElementById('p1-subtitle').innerText,
+        p1WeekLabel: document.getElementById('p1-weekLabel').innerText,
+        p2TeacherName: document.getElementById('p2-teacherName').innerText,
+        p2TeacherDept: document.getElementById('p2-teacherDept').innerText,
+        p2TeacherQuote: document.getElementById('p2-teacherQuote').innerText,
+        p2TeacherImg: document.getElementById('p2-teacherImg').src,
+        p3ArticleTitle: document.getElementById('p3-articleTitle').innerText,
+        p3ExcerptText: document.getElementById('p3-excerptText').innerText,
+        p3Takeaway: document.getElementById('p3-takeaway').innerText,
+        p3StudyText: document.getElementById('p3-studyText').innerText,
+        p3PlcPrompt: document.getElementById('p3-plcPrompt').innerText
+      };
+
+      archives[activeWeekId] = editionData;
+      saveArchivesToStorage();
+      showToast("💾 Saved & Published to Portal Archive!");
+    }
+
+    // Create New Week Edition Modal
+    function createNewWeekPrompt() {
+      const weekDate = prompt("Enter date label for new edition (e.g. 'Nov 09, 2026'):", "Nov 09, 2026");
+      if (!weekDate) return;
+
+      const newId = `week_${Date.now()}`;
+      const newTitle = `Week of ${weekDate}`;
+
+      archives[newId] = {
+        id: newId,
+        title: newTitle,
+        p1Title: "★ COMING SOON: THIS WEEK AT IS 206 B ★",
+        p1Subtitle: "WEEKLY BULLETIN & FEATURE PRESENTATIONS",
+        p1WeekLabel: `WEEK OF ${weekDate.toUpperCase()}`,
+        p2TeacherName: "Teacher Name",
+        p2TeacherDept: "Department / Grade Lead",
+        p2TeacherQuote: "Insert teacher shoutout and recognition quote here.",
+        p2TeacherImg: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=80",
+        p3ArticleTitle: 'Excerpt: "Educational Mastery Title"',
+        p3ExcerptText: '"Insert educational excerpt or research quote here."',
+        p3Takeaway: 'Key takeaway action item for classroom implementation.',
+        p3StudyText: 'Summary of educational research findings.',
+        p3PlcPrompt: '"Discussion prompt for upcoming grade level meetings."'
+      };
+
+      activeWeekId = newId;
+      saveArchivesToStorage();
+      populateWeekDropdown();
+      loadSelectedWeek();
+      switchTab('all');
+      showToast(`Created ${newTitle}!`);
+    }
+
+    // Help Modal Controls
+    function openHelpModal() {
+      document.getElementById('helpModal').classList.remove('hidden');
+    }
+
+    function closeHelpModal() {
+      document.getElementById('helpModal').classList.add('hidden');
+    }
+
+    // Print Handling
+    function triggerPrint() {
+      switchTab('all');
+      setTimeout(() => {
+        window.print();
+      }, 300);
+    }
+
+    // Toast Notification Banner
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3200);
+    }
+  </script>
+</body>
+</html>
